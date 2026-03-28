@@ -274,13 +274,20 @@ input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); backgro
 /*Developer Menu Modal*/
 .dev-overlay { position:fixed; inset:0; z-index:5000; background:rgba(0,0,0,0.8); backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity 0.2s; }
 .dev-overlay.open { opacity:1; pointer-events:all; }
-.dev-dialog { background:var(--surface); border:1px solid rgba(120,80,200,0.5); border-radius:14px; padding:32px 28px 28px; width:380px; box-shadow:0 24px 64px rgba(0,0,0,0.7), 0 0 0 1px rgba(120,80,200,0.15), 0 0 40px rgba(120,80,200,0.08); animation: modalIn 0.25s ease; position:relative; }
+.dev-dialog { background:var(--surface); border:1px solid rgba(120,80,200,0.5); border-radius:14px; padding:28px 24px 24px; width:420px; max-height:88vh; display:flex; flex-direction:column; box-shadow:0 24px 64px rgba(0,0,0,0.7), 0 0 0 1px rgba(120,80,200,0.15), 0 0 40px rgba(120,80,200,0.08); animation: modalIn 0.25s ease; position:relative; }
 .dev-dialog::before { content:''; position:absolute; inset:-1px; border-radius:15px; background:linear-gradient(135deg, rgba(120,80,200,0.15) 0%, transparent 50%); pointer-events:none; border:1px solid transparent; }
-.dev-header { text-align:center; margin-bottom:24px; }
+.dev-header { text-align:center; margin-bottom:20px; flex-shrink:0; }
 .dev-icon { font-size:2rem; margin-bottom:10px; display:block; filter:drop-shadow(0 0 10px rgba(120,80,200,0.5)); }
 .dev-title { font-size:1.1rem; color:var(--cream); font-weight:700; letter-spacing:-0.2px; }
 .dev-subtitle { font-size:0.65rem; color:rgba(160,120,240,0.8); text-transform:uppercase; letter-spacing:2px; margin-top:6px; }
-.dev-row { display:flex; align-items:center; justify-content:space-between; padding:12px 14px; background:var(--surface2); border:1px solid var(--border); border-radius:8px; margin-bottom:8px; }
+.dev-body { overflow-y:auto; flex:1; padding-right:2px; }
+.dev-body::-webkit-scrollbar { width:5px; }
+.dev-body::-webkit-scrollbar-track { background:transparent; }
+.dev-body::-webkit-scrollbar-thumb { background:rgba(120,80,200,0.3); border-radius:3px; }
+.dev-body::-webkit-scrollbar-thumb:hover { background:rgba(120,80,200,0.55); }
+.dev-section { margin-bottom:6px; }
+.dev-section-header { font-size:0.62rem; font-weight:700; color:rgba(160,120,240,0.7); text-transform:uppercase; letter-spacing:2px; padding:10px 2px 6px; border-bottom:1px solid rgba(120,80,200,0.18); margin-bottom:6px; }
+.dev-row { display:flex; align-items:center; justify-content:space-between; padding:10px 12px; background:var(--surface2); border:1px solid var(--border); border-radius:8px; margin-bottom:6px; }
 .dev-row-label { font-size:0.82rem; font-weight:600; color:var(--text); }
 .dev-row-desc { font-size:0.7rem; color:var(--text-muted); margin-top:2px; }
 .dev-toggle { position:relative; width:42px; height:24px; flex-shrink:0; }
@@ -290,11 +297,35 @@ input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); backgro
 .dev-toggle-thumb { position:absolute; content:''; height:16px; width:16px; left:3px; bottom:3px; background:var(--text-muted); border-radius:50%; transition:0.2s; pointer-events:none; }
 .dev-toggle input:checked ~ .dev-toggle-thumb { transform:translateX(18px); background:#fff; }
 .dev-bypass-active { border-color:rgba(120,80,200,0.4); background:rgba(120,80,200,0.06); }
+.dev-danger-active { border-color:rgba(192,96,96,0.4) !important; background:rgba(192,96,96,0.06) !important; }
 .btn-dev { background:rgba(120,80,200,0.15); border:1px solid rgba(120,80,200,0.4); color:rgba(180,140,255,0.9); font-weight:600; transition:background 0.15s, border-color 0.15s; }
 .btn-dev:hover { background:rgba(120,80,200,0.25); border-color:rgba(120,80,200,0.7); }
+.btn-dev-danger { background:rgba(120,40,40,0.2); border:1px solid rgba(192,80,80,0.4); color:rgba(240,140,140,0.9); font-weight:600; transition:background 0.15s, border-color 0.15s; }
+.btn-dev-danger:hover { background:rgba(180,50,50,0.3); border-color:rgba(220,100,100,0.7); }
+.dev-info-panel { background:rgba(0,0,0,0.25); border:1px solid rgba(120,80,200,0.2); border-radius:8px; padding:10px 12px; margin-bottom:6px; }
+.dev-info-row { display:flex; justify-content:space-between; align-items:center; padding:3px 0; font-size:0.75rem; border-bottom:1px solid rgba(255,255,255,0.04); }
+.dev-info-row:last-child { border-bottom:none; padding-bottom:0; }
+.dev-info-key { color:var(--text-muted); font-weight:500; }
+.dev-info-val { color:var(--cream); font-family:'DM Mono',monospace; font-size:0.72rem; font-weight:600; max-width:55%; text-align:right; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.dev-license-row { display:flex; align-items:center; justify-content:space-between; padding:6px 12px; background:var(--surface2); border:1px solid var(--border); border-radius:6px; margin-bottom:5px; }
+.dev-license-name { font-size:0.78rem; font-weight:600; color:var(--text); }
+.dev-license-status { display:flex; align-items:center; gap:6px; font-size:0.7rem; }
+.dev-status-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; transition:background 0.3s; }
+.dev-status-dot.active   { background:#4caf7d; box-shadow:0 0 6px rgba(76,175,125,0.6); }
+.dev-status-dot.expired  { background:#c06060; box-shadow:0 0 6px rgba(192,96,96,0.6); }
+.dev-status-dot.checking { background:#c9a84c; animation:timerPulse 1s ease-in-out infinite; }
+.dev-status-dot.unknown  { background:var(--text-dim); }
 
 /*Welcome Overlay*/
-#welcomeOverlay { z-index: 3000; background: rgba(14, 14, 15, 0.95); backdrop-filter: blur(10px); }
+#welcomeOverlay { z-index: 3000; background: rgba(14, 14, 15, 0.95); backdrop-filter: blur(10px); zoom: calc(1 / var(--app-scale)); }
+
+/*License Expired Overlay — above everything including welcome screen*/
+#licenseExpiredOverlay { z-index: 6000; }
+.license-expired-dialog { background:var(--surface); border:1px solid #5a2020; border-radius:14px; padding:28px 28px 22px; width:340px; max-width:92vw; box-shadow:0 24px 64px rgba(0,0,0,0.65), 0 0 0 1px rgba(192,96,96,0.1); animation: modalIn 0.22s ease; position:relative; }
+.license-expired-dialog::before { content:''; position:absolute; inset:-1px; border-radius:15px; background:linear-gradient(135deg, rgba(192,96,96,0.1) 0%, transparent 50%); pointer-events:none; }
+
+/*Green success toast variant*/
+.toast-success { border-color:rgba(61,122,74,0.6) !important; color:#6dc97d !important; }
 </style>
 </head>
 <body>
@@ -511,44 +542,211 @@ input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); backgro
 <!-- ══════════════════════════════════════════════════════════════════════════════
      DEVELOPER MENU MODAL
      Accessible only via the hidden 5-click easter egg on the attribution text.
-     Provides options to bypass guest restrictions and access the repository.
      ══════════════════════════════════════════════════════════════════════════════ -->
 <div class="dev-overlay" id="devOverlay">
-  <div class="dev-dialog">
+  <div class="dev-dialog" style="width: 1000px; height: 577px; max-width: 90vw; max-height: 90vh; resize: none; overflow: none;">
     <div class="dev-header">
       <span class="dev-icon">🛠</span>
       <div class="dev-title">Developer Menu</div>
       <div class="dev-subtitle">Internal Access — CCU v<span id="devMenuVersion"></span></div>
     </div>
 
-    <!-- Toggle: bypass all guest restrictions -->
-    <div class="dev-row" id="devBypassRow">
-      <div>
-        <div class="dev-row-label">Bypass Guest Restrictions</div>
-        <div class="dev-row-desc">Remove round cap, player cap, and feature locks for Guest</div>
+    <div class="dev-body">
+
+      <!-- Session Snapshot -->
+      <div class="dev-section">
+        <div class="dev-section-header">Session</div>
+        <div class="dev-info-panel" id="devInfoPanel">
+          <div class="dev-info-row"><span class="dev-info-key">Active School</span><span class="dev-info-val" id="devInfoSchool">—</span></div>
+          <div class="dev-info-row"><span class="dev-info-key">Players</span><span class="dev-info-val" id="devInfoPlayers">—</span></div>
+          <div class="dev-info-row"><span class="dev-info-key">Tournament Round</span><span class="dev-info-val" id="devInfoRound">—</span></div>
+          <div class="dev-info-row"><span class="dev-info-key">Storage Used</span><span class="dev-info-val" id="devInfoStorage">—</span></div>
+          <div class="dev-info-row"><span class="dev-info-key">Polkit Source</span><span class="dev-info-val" id="devInfoPolkit">—</span></div>
+          <div class="dev-info-row"><span class="dev-info-key">Uptime</span><span class="dev-info-val" id="devInfoUptime">—</span></div>
+        </div>
       </div>
-      <label class="dev-toggle">
-        <input type="checkbox" id="devBypassToggle" onchange="toggleDevBypass(this.checked)">
-        <div class="dev-toggle-track"></div>
-        <div class="dev-toggle-thumb"></div>
-      </label>
+
+      <!-- Toggles -->
+      <div class="dev-section">
+        <div class="dev-section-header">Toggles</div>
+
+        <div class="dev-row" id="devBypassRow">
+          <div>
+            <div class="dev-row-label">Bypass Guest Restrictions</div>
+            <div class="dev-row-desc">Remove round cap, player cap, and feature locks for Guest</div>
+          </div>
+          <label class="dev-toggle">
+            <input type="checkbox" id="devBypassToggle" onchange="toggleDevBypass(this.checked)">
+            <div class="dev-toggle-track"></div>
+            <div class="dev-toggle-thumb"></div>
+          </label>
+        </div>
+
+        <div class="dev-row" id="devForceWelcomeRow">
+          <div>
+            <div class="dev-row-label">Force Welcome on Launch</div>
+            <div class="dev-row-desc">Always show school selection screen on every app launch</div>
+          </div>
+          <label class="dev-toggle">
+            <input type="checkbox" id="devForceWelcomeToggle" onchange="toggleDevForceWelcome(this.checked)">
+            <div class="dev-toggle-track"></div>
+            <div class="dev-toggle-thumb"></div>
+          </label>
+        </div>
+
+        <div class="dev-row" id="devLicenseBypassRow">
+          <div>
+            <div class="dev-row-label">Skip License Verification</div>
+            <div class="dev-row-desc">Bypass license check; toggling off reverts to standard validation</div>
+          </div>
+          <label class="dev-toggle">
+            <input type="checkbox" id="devLicenseBypassToggle" onchange="toggleDevLicenseBypass(this.checked)">
+            <div class="dev-toggle-track"></div>
+            <div class="dev-toggle-thumb"></div>
+          </label>
+        </div>
+
+        <div class="dev-row" id="devForceExpiredRow">
+          <div>
+            <div class="dev-row-label">Simulate Expired License</div>
+            <div class="dev-row-desc">Force the active school to appear unlicensed without editing GitHub</div>
+          </div>
+          <label class="dev-toggle">
+            <input type="checkbox" id="devForceExpiredToggle" onchange="toggleDevForceExpired(this.checked)">
+            <div class="dev-toggle-track"></div>
+            <div class="dev-toggle-thumb"></div>
+          </label>
+        </div>
+
+        <div class="dev-row" id="devOfflineRow">
+          <div>
+            <div class="dev-row-label">Simulate Offline Mode</div>
+            <div class="dev-row-desc">Intercepts all fetch calls to test network-failure behaviour</div>
+          </div>
+          <label class="dev-toggle">
+            <input type="checkbox" id="devOfflineToggle" onchange="toggleDevOffline(this.checked)">
+            <div class="dev-toggle-track"></div>
+            <div class="dev-toggle-thumb"></div>
+          </label>
+        </div>
+      </div>
+
+      <!-- License Status -->
+      <div class="dev-section">
+        <div class="dev-section-header">License Status</div>
+        <div id="devLicenseStatusList">
+          <div class="dev-license-row">
+            <span class="dev-license-name">Port Shepstone High</span>
+            <span class="dev-license-status">
+              <span class="dev-status-dot unknown" id="devLicenseDot-pshs"></span>
+              <span id="devLicenseText-pshs" style="color:var(--text-muted);">—</span>
+              <button class="btn btn-dev btn-sm" style="padding:2px 8px; font-size:0.68rem;" onclick="devRecheckLicense('pshs')">Check</button>
+            </span>
+          </div>
+          <div class="dev-license-row">
+            <span class="dev-license-name">Izotsha Primary</span>
+            <span class="dev-license-status">
+              <span class="dev-status-dot unknown" id="devLicenseDot-izotsha"></span>
+              <span id="devLicenseText-izotsha" style="color:var(--text-muted);">—</span>
+              <button class="btn btn-dev btn-sm" style="padding:2px 8px; font-size:0.68rem;" onclick="devRecheckLicense('izotsha')">Check</button>
+            </span>
+          </div>
+        </div>
+        <div class="dev-row" style="margin-top:6px;">
+          <div>
+            <div class="dev-row-label">Re-check Active School</div>
+            <div class="dev-row-desc">Instantly re-validate the current school's license from GitHub</div>
+          </div>
+          <button class="btn btn-dev btn-sm" onclick="devRecheckActiveLicense()">Run ↻</button>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="dev-section">
+        <div class="dev-section-header">Actions</div>
+
+        <div class="dev-row">
+          <div>
+            <div class="dev-row-label">Generate Test Players</div>
+            <div class="dev-row-desc">Inject 10 randomised players into the current registry</div>
+          </div>
+          <button class="btn btn-dev btn-sm" onclick="devGenerateTestPlayers()">Inject</button>
+        </div>
+
+        <div class="dev-row">
+          <div>
+            <div class="dev-row-label">Export State</div>
+            <div class="dev-row-desc">Copy the full JSON state to clipboard for debugging</div>
+          </div>
+          <button class="btn btn-dev btn-sm" onclick="devExportState()">Copy</button>
+        </div>
+
+        <div class="dev-row">
+          <div>
+            <div class="dev-row-label">Clear School Data</div>
+            <div class="dev-row-desc">Wipe players &amp; tournament for the active school only</div>
+          </div>
+          <button class="btn btn-dev-danger btn-sm" onclick="devClearSchoolData()">Clear</button>
+        </div>
+
+        <div class="dev-row">
+          <div>
+            <div class="dev-row-label">Factory Reset</div>
+            <div class="dev-row-desc">Permanently delete all localStorage data and reload</div>
+          </div>
+          <button class="btn btn-dev-danger btn-sm" onclick="devFactoryReset()">Reset</button>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div class="dev-section">
+        <div class="dev-section-header">Links</div>
+        <div class="dev-row">
+          <div>
+            <div class="dev-row-label">Main Repository</div>
+            <div class="dev-row-desc">Open the CCU GitHub repository</div>
+          </div>
+          <button class="btn btn-dev btn-sm" onclick="window.open('https://github.com/Abscissa24/CCU','_blank')">Open ↗</button>
+        </div>
+        <div class="dev-row">
+          <div>
+            <div class="dev-row-label">PSHS License File</div>
+            <div class="dev-row-desc">View the raw license file on GitHub</div>
+          </div>
+          <button class="btn btn-dev btn-sm" onclick="window.open('https://github.com/Abscissa24/CCU/blob/main/PSHS/license','_blank')">Open ↗</button>
+        </div>
+        <div class="dev-row">
+          <div>
+            <div class="dev-row-label">Izotsha License File</div>
+            <div class="dev-row-desc">View the raw license file on GitHub</div>
+          </div>
+          <button class="btn btn-dev btn-sm" onclick="window.open('https://github.com/Abscissa24/CCU/blob/main/Izotsha/license','_blank')">Open ↗</button>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Button: open main repository in browser -->
-    <div class="dev-row">
-      <div>
-        <div class="dev-row-label">Main Repository</div>
-        <div class="dev-row-desc">Open the CCU GitHub repository</div>
-      </div>
-      <button class="btn btn-dev btn-sm" onclick="window.open('https://github.com/Abscissa24/CCU','_blank')">Open ↗</button>
+    <div style="border-top:1px solid rgba(120,80,200,0.2); margin-top:14px; padding-top:14px; flex-shrink:0;">
+      <button class="btn btn-outline" style="width:100%; font-size:0.8rem;" onclick="closeDevMenu()">Close</button>
     </div>
-
-    <div style="border-top:1px solid var(--border); margin:16px 0 12px;"></div>
-    <button class="btn btn-outline" style="width:100%; font-size:0.8rem;" onclick="closeDevMenu()">Close</button>
   </div>
 </div>
 
-<!-- Participant selection / management modal -->
+<!-- ══════════════════════════════════════════════════════════════════════════════
+     LICENSE EXPIRED OVERLAY
+     Shown above all other content (z-index 6000) when a school's license is
+     inactive — blocks access even for already-logged-in users.
+     ══════════════════════════════════════════════════════════════════════════════ -->
+<div class="del-overlay" id="licenseExpiredOverlay" style="z-index:6000;">
+  <div class="license-expired-dialog">
+    <span class="del-icon">⛔</span>
+    <div class="del-title" id="licenseExpiredTitle">Subscription Expired</div>
+    <div class="del-sub" id="licenseExpiredMsg">The license for this school is currently inactive. Please ensure the monthly subscription is up to date, then try again.</div>
+    <div class="del-actions">
+      <button class="btn btn-gold" style="flex:1; justify-content:center; padding:9px;" onclick="closeLicenseExpiredOverlay()">OK</button>
+    </div>
+  </div>
+</div>
 <div class="player-overlay" id="participantOverlay">
   <div class="player-dialog" style="width:min(900px,96vw); height:60vh; display:flex; flex-direction:column;">
     <div class="player-dialog-header" style="justify-content:space-between;">
@@ -581,9 +779,9 @@ input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); backgro
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════════════════════════════════════
+<!-- ═══════════════
      MAIN APP HEADER
-     ══════════════════════════════════════════════════════════════════════════════ -->
+     ═══════════════ -->
 <header>
   <div class="logo-container">
     <!-- Clicking the chess piece icon also toggles the sidebar -->
@@ -606,9 +804,9 @@ input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); backgro
   </div>
 </header>
 
-<!-- ══════════════════════════════════════════════════════════════════════════════
+<!-- ══════════════════════════════════
      APP LAYOUT: Sidebar + Main Content
-     ══════════════════════════════════════════════════════════════════════════════ -->
+     ══════════════════════════════════ -->
 <div class="app-layout">
   <aside class="sidebar">
     <div class="sidebar-section">
@@ -877,18 +1075,51 @@ input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); backgro
   </main>
 </div>
 
-<!-- ══════════════════════════════════════════════════════════════════════════════
+<!-- ════════════════════════════════
      JAVASCRIPT — Chess Coach Utility
-     ══════════════════════════════════════════════════════════════════════════════ -->
+     ════════════════════════════════ -->
 <script>
 'use strict';
 
-// ── Constants & School Configuration ─────────────────────────────────────────
+// ── Constants & School Configuration  ──
 const CURRENT_VERSION = '2.260328';
 const VERSION_URL     = 'https://raw.githubusercontent.com/Abscissa24/CCU/main/Assets/Update/Version.txt';
-const DEV_PIN         = '2424';         // Secret developer access PIN
-const GUEST_MAX_PLAYERS = 20;           // Database cap for guest accounts
-const GUEST_MAX_ROUNDS  = 3;            // Tournament round cap for guest accounts
+const DEV_PIN_URL     = 'https://raw.githubusercontent.com/Abscissa24/CCU/main/Assets/Modal/Authentication/polkit';
+const DEV_PIN_FALLBACK = '2424';          // Used if the remote polkit file is unreachable
+const GUEST_MAX_PLAYERS = 10;             // Database cap for guest accounts
+const GUEST_MAX_ROUNDS  = 3;              // Tournament round cap for guest accounts
+
+/**
+ * Fetches the developer PIN from the remote polkit file on GitHub.
+ * Returns the 4-digit code as a string, or the fallback if unreachable.
+ * @returns {Promise<string>}
+ */
+async function fetchDevPin() {
+  const apiUrl = rawUrlToApiUrl(DEV_PIN_URL);
+  try {
+    if (apiUrl) {
+      const res  = await fetch(apiUrl, { headers: { Accept: 'application/vnd.github.v3+json' } });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      const raw  = atob(json.content.replace(/\n/g, '')).trim();
+      if (/^\d{4}$/.test(raw)) { _devPolkitSource = 'GitHub API'; return raw; }
+      console.warn('[CCU] polkit returned unexpected value — using fallback PIN');
+      _devPolkitSource = 'fallback (bad value)';
+      return DEV_PIN_FALLBACK;
+    } else {
+      const res = await fetch(DEV_PIN_URL, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const raw = (await res.text()).trim();
+      if (/^\d{4}$/.test(raw)) { _devPolkitSource = 'raw url'; return raw; }
+      _devPolkitSource = 'fallback (bad value)';
+      return DEV_PIN_FALLBACK;
+    }
+  } catch (err) {
+    console.warn('[CCU] Could not fetch developer PIN:', err.message, '— using fallback');
+    _devPolkitSource = 'fallback (offline)';
+    return DEV_PIN_FALLBACK;
+  }
+}
 
 /**
  * School registry. Each entry defines:
@@ -1013,16 +1244,83 @@ function loadState() {
   changeScale(state.scale || 1);
   changeGradientMode(state.gradientMode);
   if (state.roundMinutes) _roundMinutes = state.roundMinutes;
+
+  // Restore persisted dev flags (force welcome persists across sessions)
+  if (state.devForceWelcome) _devForceWelcome = true;
+
   applySchoolUI();
 
-  if (!state.isSetupComplete) {
+  // Force welcome: always show school selector when dev flag is active
+  if (_devForceWelcome || !state.isSetupComplete) {
     document.getElementById('welcomeOverlay').classList.add('open');
   } else {
+    // Already logged in — re-verify the active school's license in the background
+    checkStartupLicense(state.selectedSchool);
     checkForUpdates();
   }
 }
 
 // Guest Restriction Helpers
+
+/**
+ * Silently checks the license on startup for an already-logged-in school.
+ * If the license is expired, blocks the UI with the expired overlay.
+ */
+async function checkStartupLicense(id) {
+  if (_devLicenseBypass) return; // Skip if dev bypass is active
+  if (!id || id === 'guest') return;
+  const licensed = await checkSchoolLicense(id);
+  if (!licensed) {
+    showLicenseExpiredOverlay(id);
+    // Reopen the welcome screen underneath so the user can switch schools
+    document.getElementById('welcomeOverlay').classList.add('open');
+  } else {
+    // Start periodic polling to detect mid-session license changes immediately
+    startLicensePolling(id);
+  }
+}
+
+/** Displays the dedicated high-priority license expired overlay. */
+function showLicenseExpiredOverlay(id) {
+  const name = (SCHOOLS[id] && SCHOOLS[id].name) ? SCHOOLS[id].name : 'this school';
+  document.getElementById('licenseExpiredMsg').textContent =
+    `The license for ${name} is currently inactive. Please ensure the monthly subscription is up to date, then try again.`;
+  document.getElementById('licenseExpiredOverlay').classList.add('open');
+}
+
+/** Closes the license expired overlay (OK button). */
+function closeLicenseExpiredOverlay() {
+  document.getElementById('licenseExpiredOverlay').classList.remove('open');
+}
+
+// Real-time license polling
+
+let _licensePollingInterval = null;
+
+/**
+ * Starts a background polling loop that re-checks the active school's
+ * license every 30 seconds, reflecting changes immediately without a page reload.
+ */
+function startLicensePolling(id) {
+  stopLicensePolling();
+  if (!id || id === 'guest') return;
+  _licensePollingInterval = setInterval(async () => {
+    if (_devLicenseBypass) return;
+    const licensed = await checkSchoolLicense(id);
+    if (!licensed) {
+      stopLicensePolling();
+      showLicenseExpiredOverlay(id);
+      document.getElementById('welcomeOverlay').classList.add('open');
+    }
+  }, 30000); // Poll every 30 seconds
+}
+
+function stopLicensePolling() {
+  if (_licensePollingInterval) {
+    clearInterval(_licensePollingInterval);
+    _licensePollingInterval = null;
+  }
+}
 
 /**
  * Whether the current session has guest-level restrictions active.
@@ -1053,8 +1351,10 @@ function showGuestRestriction(featureName) {
  */
 function switchSchool(id) {
   if (!SCHOOLS[id]) return;
-  // If already on this school and setup is complete, do nothing
-  if (id === state.selectedSchool && state.isSetupComplete) return;
+  // If already on this school and setup is complete, only skip if the welcome
+  // overlay is NOT currently open (force-welcome mode must always allow selection)
+  const welcomeOpen = document.getElementById('welcomeOverlay').classList.contains('open');
+  if (id === state.selectedSchool && state.isSetupComplete && !welcomeOpen) return;
 
   if (id === 'guest') {
     completeSchoolSwitch('guest');
@@ -1065,7 +1365,27 @@ function switchSchool(id) {
 }
 
 /**
+ * Converts a raw.githubusercontent.com URL to a GitHub Contents API URL.
+ * The API bypasses GitHub's CDN and always returns the live file content,
+ * eliminating the multi-minute propagation delay from raw URL caching.
+ *
+ * e.g. https://raw.githubusercontent.com/Owner/Repo/main/path/file
+ *   →  https://api.github.com/repos/Owner/Repo/contents/path/file?ref=main
+ *
+ * @param {string} rawUrl
+ * @returns {string|null} API URL, or null if the input isn't a recognised raw URL.
+ */
+function rawUrlToApiUrl(rawUrl) {
+  const m = rawUrl.match(/^https:\/\/raw\.githubusercontent\.com\/([^/]+)\/([^/]+)\/([^/]+)\/(.+)$/);
+  if (!m) return null;
+  const [, owner, repo, branch, path] = m;
+  return `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`;
+}
+
+/**
  * Checks the school's license file on GitHub.
+ * Uses the GitHub Contents API (not the raw CDN URL) so changes are
+ * reflected immediately without any propagation delay.
  * @param {string} id - School key (e.g. 'pshs', 'izotsha').
  * @returns {Promise<boolean>} true if licensed, false if expired/unreachable.
  */
@@ -1073,11 +1393,27 @@ async function checkSchoolLicense(id) {
   const school = SCHOOLS[id];
   if (!school || !school.licenseUrl) return true; // No URL = no check required
 
+  // Dev: simulate expired license for the active school
+  if (_devForceExpired && id === state.selectedSchool) return false;
+
+  const apiUrl = rawUrlToApiUrl(school.licenseUrl);
+
   try {
-    const res  = await fetch(school.licenseUrl + '?t=' + Date.now());
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const text = (await res.text()).trim().toLowerCase();
-    return text === 'true';
+    if (apiUrl) {
+      // GitHub Contents API — always live, bypasses CDN cache
+      const res  = await fetch(apiUrl, { headers: { Accept: 'application/vnd.github.v3+json' } });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      // Content is base64-encoded; decode and normalise
+      const text = atob(json.content.replace(/\n/g, '')).trim().toLowerCase();
+      return text === 'true';
+    } else {
+      // Fallback: direct fetch with cache disabled (non-GitHub URLs)
+      const res  = await fetch(school.licenseUrl, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const text = (await res.text()).trim().toLowerCase();
+      return text === 'true';
+    }
   } catch (err) {
     console.warn(`[CCU] License check failed for ${id}:`, err.message);
     // Network failure — fail open so offline use is not blocked
@@ -1091,17 +1427,24 @@ async function checkSchoolLicense(id) {
  * @param {string} id - School key.
  */
 async function completeSwitchWithLicenseCheck(id) {
-  // Show a brief loading indicator in the toast area
+  // Developer bypass: skip all license checks
+  if (_devLicenseBypass) {
+    showToast('🛠 License check skipped (dev mode)', 'default');
+    completeSchoolSwitch(id);
+    return;
+  }
+
+  // Show a brief loading indicator
   showToast('⏳ Verifying license…', 'default');
 
   const licensed = await checkSchoolLicense(id);
   if (!licensed) {
-    showAlert(
-      '⛔ Subscription Expired',
-      `The license for ${SCHOOLS[id].name} is currently inactive. Please ensure the monthly subscription is up to date, then try again.`
-    );
+    showLicenseExpiredOverlay(id);
     return;
   }
+
+  // License confirmed active — show green success feedback
+  showSuccessToast('✓ License Active');
   completeSchoolSwitch(id);
 }
 
@@ -1125,11 +1468,15 @@ function completeSchoolSwitch(id) {
   saveState();
 
   document.getElementById('welcomeOverlay').classList.remove('open');
+  document.getElementById('licenseExpiredOverlay').classList.remove('open');
   applySchoolUI();
   renderDatabase();
   renderTournament();
 
   if (wasFirstSetup) checkForUpdates();
+
+  // Begin real-time license polling for the active school
+  if (id !== 'guest') startLicensePolling(id);
 }
 
 /**
@@ -1730,7 +2077,9 @@ function renderParticipantList() {
   const countEl   = document.getElementById('participantCount');
   const confirmBtn = document.getElementById('participantConfirmBtn');
 
-  list.innerHTML = state.dbPlayers.map(p => {
+  const sorted = [...state.dbPlayers].sort((a, b) => (b.rating || 0) - (a.rating || 0));
+
+  list.innerHTML = sorted.map(p => {
     const checked      = _pendingParticipants.has(p.id);
     const ratingLabel  = p.rating
       ? `<span class="badge" style="font-family:'DM Mono',monospace; font-size:0.72rem;">${p.rating}</span>`
@@ -2242,45 +2591,260 @@ function handleAttributionClick() {
     _attributionClickCount = 0;
     clearTimeout(_attributionClickTimer);
     _attributionClickTimer = null;
-    openPinModal('developer', '', DEV_PIN);
+
+    // Fetch developer PIN remotely before opening the modal
+    fetchDevPin().then(pin => {
+      openPinModal('developer', '', pin);
+    });
   }
 }
 
 // Developer Menu
 
-let _devBypassEnabled = false; // Session-only; resets on page reload
+let _devBypassEnabled    = false; // Session-only; resets on page reload
+let _devForceWelcome     = false; // Force welcome screen on every launch (persisted)
+let _devLicenseBypass    = false; // Skip license verification entirely
+let _devForceExpired     = false; // Simulate expired license for active school
+let _devOffline          = false; // Intercept all fetch calls to simulate offline
+let _devSessionStart     = Date.now(); // Track uptime since page load
+let _devPolkitSource     = '—';  // 'github api' | 'fallback' | '—'
 
-/** Opens the developer menu modal and syncs the toggle state. */
+// Offline simulation — wrap the global fetch when active
+const _originalFetch = window.fetch.bind(window);
+function _devFetch(...args) {
+  if (_devOffline) return Promise.reject(new TypeError('[CCU] Offline simulation — fetch blocked'));
+  return _originalFetch(...args);
+}
+
+/** Populates the session info panel with live data. */
+function devRefreshInfo() {
+  const s = activeSchool();
+  const storageBytes = new Blob([localStorage.getItem('coachdata') || '']).size;
+  const storageLabel = storageBytes > 1024
+    ? (storageBytes / 1024).toFixed(1) + ' KB'
+    : storageBytes + ' B';
+  const uptimeMs  = Date.now() - _devSessionStart;
+  const uptimeSec = Math.floor(uptimeMs / 1000);
+  const mm = String(Math.floor(uptimeSec / 60)).padStart(2, '0');
+  const ss = String(uptimeSec % 60).padStart(2, '0');
+
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  set('devInfoSchool',  s.name || '—');
+  set('devInfoPlayers', state.dbPlayers.length + ' player' + (state.dbPlayers.length !== 1 ? 's' : ''));
+  set('devInfoRound',   state.tournament.round > 0 ? 'Round ' + state.tournament.round : 'No tournament');
+  set('devInfoStorage', storageLabel);
+  set('devInfoPolkit',  _devPolkitSource);
+  set('devInfoUptime',  mm + ':' + ss);
+}
+
+/** Opens the developer menu modal and syncs all toggle states. */
 function openDevMenu() {
-  document.getElementById('devMenuVersion').textContent      = CURRENT_VERSION;
+  document.getElementById('devMenuVersion').textContent = CURRENT_VERSION;
+
+  // Sync toggle states
   document.getElementById('devBypassToggle').checked         = _devBypassEnabled;
-  document.getElementById('devBypassRow').className          =
-    'dev-row' + (_devBypassEnabled ? ' dev-bypass-active' : '');
+  document.getElementById('devBypassRow').className          = 'dev-row' + (_devBypassEnabled ? ' dev-bypass-active' : '');
+  document.getElementById('devForceWelcomeToggle').checked   = _devForceWelcome;
+  document.getElementById('devLicenseBypassToggle').checked  = _devLicenseBypass;
+  document.getElementById('devForceExpiredToggle').checked   = _devForceExpired;
+  document.getElementById('devForceExpiredRow').className    = 'dev-row' + (_devForceExpired ? ' dev-danger-active' : '');
+  document.getElementById('devOfflineToggle').checked        = _devOffline;
+  document.getElementById('devOfflineRow').className         = 'dev-row' + (_devOffline ? ' dev-danger-active' : '');
+
+  devRefreshInfo();
+
+  // Auto-refresh info panel while the menu is open
+  if (!_devInfoTimer) _devInfoTimer = setInterval(devRefreshInfo, 1000);
+
+  // Kick off background license checks so dots populate
+  devRecheckAllLicenses();
+
   document.getElementById('devOverlay').classList.add('open');
 }
 
+let _devInfoTimer = null;
+
 function closeDevMenu() {
   document.getElementById('devOverlay').classList.remove('open');
+  if (_devInfoTimer) { clearInterval(_devInfoTimer); _devInfoTimer = null; }
 }
 
-/**
- * Enables or disables the guest restriction bypass for this session.
- * Updates the UI immediately to reflect the new state.
- */
+// Toggles
+
 function toggleDevBypass(enabled) {
   _devBypassEnabled = enabled;
-  document.getElementById('devBypassRow').className =
-    'dev-row' + (enabled ? ' dev-bypass-active' : '');
-  // Refresh UI elements that depend on guest state
+  document.getElementById('devBypassRow').className = 'dev-row' + (enabled ? ' dev-bypass-active' : '');
   applyGuestUI();
   renderDatabase();
-  showToast(
-    enabled ? '🛠 Guest restrictions bypassed' : '🛠 Guest restrictions restored',
-    'default'
+  showToast(enabled ? '🛠 Guest restrictions bypassed' : '🛠 Guest restrictions restored', 'default');
+}
+
+function toggleDevForceWelcome(enabled) {
+  _devForceWelcome = enabled;
+  state.devForceWelcome = enabled;
+  saveState();
+  showToast(enabled ? '🛠 Welcome screen forced on every launch' : '🛠 Welcome screen: normal behaviour restored', 'default');
+}
+
+function toggleDevLicenseBypass(enabled) {
+  _devLicenseBypass = enabled;
+  if (enabled) {
+    stopLicensePolling();
+    showToast('🛠 License verification bypassed', 'default');
+  } else {
+    const id = state.selectedSchool;
+    showToast('🛠 License bypass removed — re-validating…', 'default');
+    if (id && id !== 'guest') checkStartupLicense(id);
+  }
+}
+
+function toggleDevForceExpired(enabled) {
+  _devForceExpired = enabled;
+  document.getElementById('devForceExpiredRow').className = 'dev-row' + (enabled ? ' dev-danger-active' : '');
+  if (enabled) {
+    showToast('🛠 License simulated as expired', 'default');
+    const id = state.selectedSchool;
+    if (id && id !== 'guest') {
+      showLicenseExpiredOverlay(id);
+    }
+  } else {
+    document.getElementById('licenseExpiredOverlay').classList.remove('open');
+    showToast('🛠 Expired simulation removed', 'default');
+  }
+}
+
+function toggleDevOffline(enabled) {
+  _devOffline = enabled;
+  // Patch or restore the global fetch
+  window.fetch = enabled ? _devFetch : _originalFetch;
+  document.getElementById('devOfflineRow').className = 'dev-row' + (enabled ? ' dev-danger-active' : '');
+  showToast(enabled ? '🛠 Offline mode active — all network requests blocked' : '🛠 Offline simulation disabled', 'default');
+}
+
+// License Status
+
+/** Updates the per-school dot and label for a given school id. */
+function devSetLicenseDot(id, state_) {
+  const dot  = document.getElementById('devLicenseDot-' + id);
+  const text = document.getElementById('devLicenseText-' + id);
+  if (!dot || !text) return;
+  dot.className  = 'dev-status-dot ' + state_;
+  const labels   = { active:'Active', expired:'Expired', checking:'Checking…', unknown:'—' };
+  const colors   = { active:'#6dc97d', expired:'#c06060', checking:'var(--gold)', unknown:'var(--text-dim)' };
+  text.textContent  = labels[state_] || '—';
+  text.style.color  = colors[state_] || 'var(--text-dim)';
+}
+
+/** Manually re-checks a single school's license and updates its status dot. */
+async function devRecheckLicense(id) {
+  devSetLicenseDot(id, 'checking');
+  const ok = await checkSchoolLicense(id);
+  devSetLicenseDot(id, ok ? 'active' : 'expired');
+}
+
+/** Re-checks all schools' licenses and updates all dots. */
+async function devRecheckAllLicenses() {
+  for (const id of ['pshs', 'izotsha']) await devRecheckLicense(id);
+}
+
+/** Re-checks the active school's license and triggers UI feedback. */
+async function devRecheckActiveLicense() {
+  const id = state.selectedSchool;
+  if (!id || id === 'guest') { showToast('Guest profile has no license to check', 'default'); return; }
+  devSetLicenseDot(id, 'checking');
+  showToast('⏳ Re-checking license…', 'default');
+  const ok = await checkSchoolLicense(id);
+  devSetLicenseDot(id, ok ? 'active' : 'expired');
+  if (ok) {
+    showSuccessToast('✓ License Active');
+    stopLicensePolling();
+    startLicensePolling(id);
+  } else {
+    showLicenseExpiredOverlay(id);
+  }
+}
+
+// Actions
+
+const DEV_TEST_FIRST = ['Muzi','Sipho','Thabo','Ayanda','Lungelo','Nokwanda','Siyanda','Thandeka','Bongani','Zanele','Nkosi','Lindiwe','Simphiwe','Mthokozisi','Nompumelelo'];
+const DEV_TEST_LAST  = ['Dlamini','Nkosi','Mthembu','Ndlovu','Zulu','Khumalo','Cele','Mhlongo','Ntuli','Buthelezi','Shabalala','Mkhize','Ngubane','Bhengu','Msomi'];
+
+/** Injects 10 randomised players into the active school's registry. */
+function devGenerateTestPlayers() {
+  const rand  = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  const count = 10;
+  for (let i = 0; i < count; i++) {
+    const name   = rand(DEV_TEST_FIRST) + ' ' + rand(DEV_TEST_LAST);
+    const rating = Math.floor(Math.random() * 900) + 600; // 600–1499
+    state.dbPlayers.push({ id: 'dev_' + Date.now() + '_' + i, name, rating, chesscom: '-' });
+  }
+  saveState();
+  renderDatabase();
+  closeDevMenu();
+  showToast(`🛠 ${count} test players injected`, 'default');
+}
+
+/** Copies the full state JSON to the clipboard. */
+function devExportState() {
+  const json = JSON.stringify(JSON.parse(localStorage.getItem('coachdata') || '{}'), null, 2);
+  navigator.clipboard.writeText(json).then(() => {
+    showToast('🛠 State JSON copied to clipboard', 'default');
+  }).catch(() => {
+    showAlert('Clipboard Error', 'Could not write to clipboard. Try again or check browser permissions.');
+  });
+}
+
+/** Clears only the active school's players and tournament data. */
+function devClearSchoolData() {
+  const name = activeSchool().name;
+  closeDevMenu();
+  showConfirm(
+    'Clear School Data',
+    `This will permanently wipe all players and tournament data for ${name}. This cannot be undone.`,
+    'Clear',
+    () => {
+      state.dbPlayers  = [];
+      state.tournament = { round: 0, rounds: [], byeHistory: [] };
+      saveState();
+      renderDatabase();
+      renderTournament();
+      showToast(`🛠 ${name} data cleared`, 'default');
+    }
+  );
+}
+
+/** Wipes all localStorage and forces a full page reload. */
+function devFactoryReset() {
+  closeDevMenu();
+  showConfirm(
+    '⚠️ Factory Reset',
+    'This will permanently delete ALL saved data — all schools, players, tournaments, and preferences. The app will reload. This cannot be undone.',
+    'Reset Everything',
+    () => {
+      localStorage.clear();
+      location.reload();
+    }
   );
 }
 
 // Update System
+
+/** Shows a green-themed success toast for license confirmation. */
+function showSuccessToast(msg) {
+  const existing = document.getElementById('appToast');
+  if (existing) existing.remove();
+  const t = document.createElement('div');
+  t.id = 'appToast';
+  t.style.cssText = `position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(12px); background:var(--surface); border:1px solid rgba(61,122,74,0.55); border-radius:8px; padding:10px 22px; font-size:0.82rem; font-weight:500; color:#6dc97d; box-shadow:0 8px 28px rgba(0,0,0,0.45), 0 0 0 1px rgba(61,122,74,0.1); z-index:7000; opacity:0; transition:opacity 0.2s,transform 0.2s; pointer-events:none; white-space:nowrap;`;
+  t.textContent = msg;
+  document.body.appendChild(t);
+  requestAnimationFrame(() => { t.style.opacity = '1'; t.style.transform = 'translateX(-50%) translateY(0)'; });
+  setTimeout(() => {
+    t.style.opacity   = '0';
+    t.style.transform = 'translateX(-50%) translateY(8px)';
+    setTimeout(() => t.remove(), 220);
+  }, 3000);
+}
 
 let _latestVersion       = null;
 let _updateBannerDismissed = false;
