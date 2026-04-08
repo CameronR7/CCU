@@ -1,7 +1,7 @@
 # PSHS
 A curated collection of study resources, materials, and tools for PSHS students to support learning and academic success.
 <p align="center">
-  <img src="Assets/logo.png" width="200"/>
+  <img src="Assets/Build/icon.ico" width="200"/>
 </p>
 
 <h1 align="center">Chess Coach Utility</h1>
