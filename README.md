@@ -1,5 +1,4 @@
-# PSHS
-A curated collection of study resources, materials, and tools for PSHS students to support learning and academic success.
+
 <p align="center">
   <img src="Assets/Build/icon.ico" width="400"/>
 </p>
@@ -14,7 +13,7 @@ A curated collection of study resources, materials, and tools for PSHS students 
 
 ## 📌 Overview
 
-The Chess Coach Utility is a modern web application designed to help coaches and schools manage chess players, track performance metrics, and gain insights into player development through data visualization and analytics.
+The Chess Coach Utility is a modern application built to support multiple schools and chess programs. It allows coaches to manage players, monitor performance, and gain meaningful insights through data visualization and analytics.
 
 ---
 
@@ -23,7 +22,7 @@ The Chess Coach Utility is a modern web application designed to help coaches and
 - ♟️ Player performance tracking (ratings, wins, losses)
 - 📊 Detailed player statistics and analytics
 - 📈 Interactive charts and performance visualization
-- 🏫 Club and school-based player management
+- 🏫 Multi-school and club management support
 - 🎨 Multiple UI themes (dark, light, glass)
 - ⚡ Smooth animations and modern interface
 - 📥 Data import and management system
@@ -31,29 +30,19 @@ The Chess Coach Utility is a modern web application designed to help coaches and
 
 ---
 
-## 🧩 Project Structure
-
-- `Assets/` – Images and UI assets  
-- `Authentication/` – User access and authentication logic  
-- `Build/` – Core application components  
-- `Update/` – Update-related functionality  
-- `PSHS/` – School-specific resources  
-- `README.md` – Project documentation  
-
----
-
 ## 🚀 How to Run
 
-1. Clone or download the repository  
-2. Open the project folder  
-3. Launch the main HTML file in your browser  
+1. Download the application APK file  
+2. Open the APK on your device  
+3. Install and launch the application  
 
 ---
 
 ## 🎯 Purpose
 
-This application is built to assist chess coaches in:
-- Monitoring player progress  
+This application is designed to assist chess coaches and institutions in:
+
+- Monitoring player development  
 - Analyzing performance trends  
 - Making data-driven coaching decisions  
 
@@ -61,9 +50,9 @@ This application is built to assist chess coaches in:
 
 ## 🛠️ Technologies Used
 
-- HTML  
-- CSS  
-- JavaScript (frontend logic)  
+- HTML5  
+- CSS3  
+- JavaScript  
 
 ---
 
@@ -79,4 +68,4 @@ Contributions are welcome.
 
 ## 📄 License
 
-This project is intended for educational and development purposes. Licensing functionality is built into the application.
+This project includes built-in licensing functionality and is intended for controlled distribution and use.
