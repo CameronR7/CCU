@@ -32,9 +32,9 @@ The Chess Coach Utility is a modern application built to support multiple school
 
 ## 🚀 How to Run
 
-1. Download the application APK file  
-2. Open the APK on your device  
-3. Install and launch the application  
+1. Download the application `.exe` file  
+2. Double-click the `.exe` to launch the application  
+3. No installation required — runs as a standalone Windows application
 
 ---
 
